@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is a Bat Mitzvah?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IM+Fell+English:ital@0;1&family=Frank+Ruhl+Libre:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a short illustrated story in five chapters, like the pages of an antique book, on a sage cloth cover. */
+/* Single theme by choice: the vintage-book palette stays the same in light and dark mode. */
+:root {
+  --bg: #5d6b48;        /* sage cloth cover */
+  --panel: #f4ecda;     /* parchment page */
+  --ink: #2f3423;       /* deep olive ink */
+  --muted: #6a6550;
+  --gold: #b0842c;      /* gilt lettering */
+  --gold-light: #e6c47a;
+  --sky: #5c7049;       /* sage accent */
+  --rose: #8c2733;      /* wax-seal burgundy */
+  --blush: #e2a493;     /* dusty pink */
+  --line: #d9cbaa;
+  --display: "IM Fell English", "Iowan Old Style", Georgia, serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --hebrew: "Frank Ruhl Libre", "Times New Roman", serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+main { max-width: 1040px; margin: 0 auto; padding: 0 20px 64px; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.8rem, 7.5vw, 5rem); font-weight: 400; color: var(--panel); }
+h2 { font-size: clamp(1.9rem, 3.8vw, 2.6rem); font-weight: 400; color: var(--rose); }
+h3 { font-size: 1.35rem; font-weight: 400; }
+p { margin: 0; max-width: 62ch; }
+.muted { color: var(--muted); }
+.chapter-no {
+  font-family: var(--display); font-style: italic; font-size: 1.1rem;
+  color: var(--gold);
+}
+.stack { display: grid; gap: 16px; align-content: start; }
+
+/* Hero */
+.hero { padding: 56px 0 8px; display: grid; gap: 22px; }
+.hero .lede { font-size: 1.3rem; color: var(--panel); }
+.hero .chapter-no, .lights figcaption { color: var(--gold-light) !important; }
+.hero em { font-style: normal; color: var(--gold-light); font-weight: 700; }
+.lights { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 6px; }
+.light {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: color-mix(in srgb, var(--panel) 30%, transparent);
+  animation: light 6s ease-in-out infinite;
+}
+.lights figcaption { margin-left: 8px; font-family: var(--display); font-weight: 500; color: var(--muted); }
+@keyframes light {
+  0%, 4% { background: color-mix(in srgb, var(--panel) 30%, transparent); box-shadow: none; }
+  10%, 78% { background: var(--gold-light); box-shadow: 0 0 14px 2px color-mix(in srgb, var(--gold) 60%, transparent); }
+  90%, 100% { background: color-mix(in srgb, var(--panel) 30%, transparent); box-shadow: none; }
+}
+
+/* Chapters */
+.chapter {
+  background: var(--panel);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 7px var(--panel), inset 0 0 0 8px color-mix(in srgb, var(--gold) 55%, transparent), 0 10px 26px rgba(30, 36, 18, 0.35);
+  padding: clamp(22px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(20px, 4vw, 44px);
+  align-items: center;
+}
+.chapter.flip > .scene { order: -1; }
+.scene { width: 100%; }
+.scene svg { width: 100%; height: auto; display: block; }
+@media (max-width: 760px) {
+  .chapter { grid-template-columns: 1fr; }
+  .chapter.flip > .scene { order: 0; }
+}
+
+/* Timeline */
+.timeline { position: relative; list-style: none; margin: 0; padding: 0 0 0 34px; display: grid; gap: 18px; }
+.timeline::before {
+  content: ""; position: absolute; left: 10px; top: 6px; bottom: 6px; width: 3px;
+  background: var(--line); border-radius: 2px;
+}
+.timeline .walker {
+  position: absolute; left: 4px; top: 0; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 0 5px color-mix(in srgb, var(--gold) 25%, transparent);
+  animation: walk 7s ease-in-out infinite;
+}
+@keyframes walk { 0% { top: 0; } 85%, 100% { top: calc(100% - 15px); } }
+.timeline li { position: relative; }
+.timeline li:not(.walker)::before {
+  content: ""; position: absolute; left: -29px; top: 8px; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--panel); border: 3px solid var(--sky);
+}
+.timeline li:last-child::before { border-color: var(--gold); background: var(--gold); }
+.timeline .when { font-family: var(--display); color: var(--sky); display: block; font-size: 1.2rem; }
+.timeline li:last-child .when { color: var(--gold); }
+
+/* Hebrew demo */
+.scroll-demo {
+  background: color-mix(in srgb, var(--gold) 12%, var(--panel));
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, var(--line));
+  border-radius: 16px;
+  padding: 24px 20px 18px;
+  display: grid; gap: 14px; justify-items: center; text-align: center;
+}
+.scroll-demo { position: relative; padding: 26px 34px 20px; }
+.scroll-demo::before, .scroll-demo::after {
+  content: ""; position: absolute; top: -8px; bottom: -8px; width: 16px; border-radius: 8px;
+  background: linear-gradient(90deg, #6b4a25, #a87b45 50%, #6b4a25);
+}
+.scroll-demo::before { left: -8px; }
+.scroll-demo::after { right: -8px; }
+.rtl-hint { font-family: var(--display); font-style: italic; color: var(--rose); font-size: 1.05rem; }
+.rtl-hint .arrow { display: inline-block; font-style: normal; animation: nudge 1.4s ease-in-out infinite; }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-8px); } }
+.words { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; }
+.word { display: grid; justify-items: center; gap: 2px; padding: 4px 6px 8px; border-bottom: 3px solid transparent; animation: readword 4.5s infinite; }
+.word:nth-child(2) { animation-delay: 1.5s; }
+.word:nth-child(3) { animation-delay: 3s; }
+@keyframes readword { 0%, 30% { border-color: var(--gold); } 34%, 100% { border-color: transparent; } }
+.verse { font-family: var(--hebrew); font-weight: 500; font-size: clamp(2.2rem, 5.5vw, 3rem); line-height: 1.4; }
+.verse .word { display: inline-block; padding: 0 2px 4px; }
+.translit { font-family: var(--display); font-style: italic; font-size: 1.25rem; color: var(--sky); }
+.word .tr { font-family: var(--display); font-style: italic; font-size: 1.15rem; color: var(--sky); }
+.word .en { font-size: 0.95rem; color: var(--muted); }
+.demo-label { font-family: var(--display); font-size: 1.1rem !important; font-size: 0.95rem; color: var(--ink); }
+.demo-label span { color: var(--gold); }
+button {
+  font: 700 1rem var(--body); color: var(--ink); background: var(--panel);
+  border: 2px solid var(--ink); border-radius: 999px; padding: 8px 18px; cursor: pointer;
+}
+button:hover { background: var(--ink); color: var(--panel); }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+
+/* Day steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: step; }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+.steps li::before {
+  counter-increment: step; content: counter(step);
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--sky); color: var(--panel); font-family: var(--display);
+}
+.steps b { font-family: var(--display); font-weight: 400; font-size: 1.15em; color: var(--rose); }
+
+/* Scene animation */
+.bob { animation: bob 0.7s ease-in-out infinite alternate; }
+.bob-big { animation: bobBig 0.7s ease-in-out infinite alternate; }
+@keyframes bob { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+@keyframes bobBig { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+.wave-l { transform-origin: 190px 108px; animation: waveL 0.7s ease-in-out infinite alternate; }
+.wave-r { transform-origin: 222px 108px; animation: waveR 0.7s ease-in-out infinite alternate; }
+@keyframes waveL { from { transform: rotate(-10deg); } to { transform: rotate(12deg); } }
+@keyframes waveR { from { transform: rotate(10deg); } to { transform: rotate(-12deg); } }
+.confetti { animation: fall linear infinite; }
+@keyframes fall { from { transform: translateY(-40px); opacity: 1; } 85% { opacity: 1; } to { transform: translateY(300px); opacity: 0; } }
+.glow-pulse { animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+
+/* Guest tips */
+.tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.tip { border-top: 4px solid var(--sky); padding-top: 12px; display: grid; gap: 6px; align-content: start; }
+.tip:nth-child(4) { border-color: var(--gold); }
+.tip:nth-child(5) { border-color: var(--rose); }
+.tip:nth-child(2) { border-color: var(--blush); }
+.guests { grid-template-columns: 1fr; }
+
+.closing {
+  text-align: center; padding: 28px 0 0; display: grid; gap: 10px; justify-items: center;
+}
+.closing h2 { color: var(--gold-light); }
+.closing .muted { color: var(--panel); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .light { background: var(--gold); }
+  .timeline .walker { top: calc(100% - 15px); }
+  .confetti { display: none; }
+}
+</style>
+</head>
+<body>
+<main>
+
+  <header class="hero">
+    <span class="chapter-no">A short guide for friends and family</span>
+    <h1>What is a bat mitzvah?</h1>
+    <p class="lede">When a Jewish girl turns 13, she becomes a <em>bat mitzvah</em>, Hebrew for “daughter of the commandment.” It means she is now old enough to take responsibility for her own Jewish life. The ceremony is where she shows everyone she’s ready, and it takes years of work to get there. Later that night, everyone celebrates her hard work at a big party.</p>
+    <figure class="lights" aria-label="Thirteen lights, one for each year" style="margin:0">
+      <div id="lights" style="display:flex;flex-wrap:wrap;gap:10px"></div>
+      <figcaption>13 years in the making</figcaption>
+    </figure>
+  </header>
+
+  <section class="chapter" aria-labelledby="c1">
+    <div class="stack">
+      <span class="chapter-no">Chapter 1</span>
+      <h2 id="c1">Years of work for one morning</h2>
+      <p>Most kids start Hebrew school around age 8, usually once or twice a week on top of regular school. In the last year or so, she meets one-on-one with a tutor, often every week, to prepare her part of the service.</p>
+      <p class="muted">Think of it like a big recital, except the music is in another language, thousands of years old, and the audience is everyone she knows.</p>
+    </div>
+    <div class="scene">
+      <ol class="timeline" aria-label="Her path to the bat mitzvah">
+        <li class="walker" aria-hidden="true"></li>
+        <li><span class="when">Around age 8</span>Learns the Hebrew alphabet: 22 letters, read right to left.</li>
+        <li><span class="when">Ages 9 to 11</span>Learns the prayers, the holidays and Jewish history.</li>
+        <li><span class="when">The final year</span>Weekly tutoring for her Torah reading and her speech.</li>
+        <li><span class="when">Age 13</span>The day itself.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter flip" aria-labelledby="c2">
+    <div class="stack">
+      <span class="chapter-no">Chapter 2</span>
+      <h2 id="c2">The hardest part: reading the scroll</h2>
+      <p>The Torah is written by hand on a scroll, the same way it has been for thousands of years.</p>
+      <p>She has to know her portion well enough to read it and chant it to a traditional melody she memorizes, standing in front of the whole congregation.</p>
+      <p>She also writes a short speech about what her portion means to her.</p>
+      <p>The service is at the synagogue and usually lasts about an hour. Attendance is optional, but your support will mean a lot to her.</p>
+    </div>
+    <div class="scene">
+      <figure class="scroll-demo" style="margin:0" aria-label="The first words of the Torah, read from right to left">
+        <div class="demo-label">The Torah’s first words, as written on the scroll</div>
+        <div class="rtl-hint" aria-hidden="true"><span class="arrow">←</span> Read from right to left</div>
+        <div class="verse" dir="rtl" lang="he"><span class="word">בראשית</span> <span class="word">ברא</span> <span class="word">אלהים</span></div>
+        <div class="translit">Bereshit bara Elohim</div>
+        <figcaption class="muted" style="font-size:0.95rem">“In the beginning, God created…” (Genesis 1:1)</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="chapter" aria-labelledby="c3">
+    <div class="stack">
+      <span class="chapter-no">Chapter 3</span>
+      <h2 id="c3">What you’ll see on the day</h2>
+      <ol class="steps">
+        <li><span><b>The service.</b> Usually in a synagogue, often on a Saturday morning. She helps lead the prayers.</span></li>
+        <li><span><b>The Torah reading.</b> The scroll is carried out and opened, and she reads her portion. This is the moment she has worked toward.</span></li>
+        <li><span><b>Her speech.</b> She shares what she learned. Expect proud tears in the front rows.</span></li>
+        <li><span><b>Candy!</b> In many synagogues, guests toss soft candies toward her afterward to wish her a sweet life.</span></li>
+        <li><span><b>The party.</b> Later that night, it’s time to celebrate! Skip the dress shoes and wear your sneakers: the DJ will keep the high-energy music going for a top-notch teen dance party that lasts until nearly midnight. Dinner and dessert will be served. Watch for the <i>hora</i>, a circle dance where she’s lifted up in a chair.</span></li>
+      </ol>
+    </div>
+    <div class="scene">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Friends and family lifting the girl up in a chair while dancing the hora">
+        <g id="confetti"></g>
+        <line x1="20" y1="286" x2="400" y2="286" stroke="var(--muted)" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
+        <!-- chair and girl -->
+        <g class="bob-big">
+          <rect x="140" y="140" width="140" height="12" rx="4" fill="var(--gold)"/>
+          <rect x="260" y="70" width="14" height="82" rx="4" fill="var(--gold)"/>
+          <line x1="150" y1="152" x2="150" y2="172" stroke="var(--gold)" stroke-width="8" stroke-linecap="round"/>
+          <line x1="268" y1="152" x2="268" y2="172" stroke="var(--gold)" stroke-width="8" stroke-linecap="round"/>
+          <g class="wave-l"><line x1="190" y1="108" x2="166" y2="66" stroke="var(--rose)" stroke-width="9" stroke-linecap="round"/></g>
+          <g class="wave-r"><line x1="222" y1="108" x2="246" y2="66" stroke="var(--rose)" stroke-width="9" stroke-linecap="round"/></g>
+          <path d="M184 140 Q184 98 206 98 Q228 98 228 140 Z" fill="var(--rose)"/>
+          <circle cx="206" cy="80" r="18" fill="#f2c9a8"/>
+          <path d="M188 80 Q188 58 206 58 Q224 58 224 80 Q216 68 206 68 Q196 68 188 80 Z" fill="#5a3522"/>
+          <circle cx="228" cy="72" r="8" fill="#5a3522"/>
+        </g>
+        <!-- dancers -->
+        <g class="bob">
+          <g fill="var(--sky)">
+            <path d="M64 286 Q64 214 92 214 Q120 214 120 286 Z"/>
+            <path d="M144 286 Q144 214 172 214 Q200 214 200 286 Z" fill="var(--blush)"/>
+            <path d="M220 286 Q220 214 248 214 Q276 214 276 286 Z" fill="var(--blush)"/>
+            <path d="M300 286 Q300 214 328 214 Q356 214 356 286 Z"/>
+          </g>
+          <g fill="#d9a47f">
+            <circle cx="92" cy="196" r="17"/>
+            <circle cx="172" cy="196" r="17" fill="#8a5a3c"/>
+            <circle cx="248" cy="196" r="17" fill="#f0c7a5"/>
+            <circle cx="328" cy="196" r="17" fill="#b47b55"/>
+          </g>
+          <g stroke="var(--ink)" stroke-width="7" stroke-linecap="round" opacity="0.75">
+            <line x1="108" y1="226" x2="150" y2="176"/>
+            <line x1="188" y1="226" x2="176" y2="178"/>
+            <line x1="232" y1="226" x2="244" y2="178"/>
+            <line x1="312" y1="226" x2="268" y2="176"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="chapter flip" aria-labelledby="c4">
+    <div class="stack">
+      <span class="chapter-no">Chapter 4</span>
+      <h2 id="c4">Why it matters so much</h2>
+      <p>A bat mitzvah is one of the most important milestones in a Jewish person’s life, much like Confirmation in many Christian churches. It marks a rite of passage: from this day on, she is counted as an adult member of her community, responsible for her own choices and traditions.</p>
+      <p>For her family, it’s something even bigger: what was handed from grandparents to parents is now hers to carry forward.</p>
+    </div>
+    <div class="scene">
+      <svg viewBox="0 0 420 250" role="img" aria-label="A golden light passing from grandparents to parents to the girl" id="gens">
+        <path id="thread" d="M70 150 C 120 90, 170 90, 210 150 S 300 210, 350 160" fill="none" stroke="var(--gold)" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>
+        <!-- grandparent -->
+        <path d="M44 230 Q44 150 76 150 Q108 150 108 230 Z" fill="var(--muted)" opacity="0.55"/>
+        <circle cx="76" cy="128" r="20" fill="#e8bf9c"/>
+        <path d="M56 124 Q60 104 76 104 Q92 104 96 124 Q86 114 76 114 Q66 114 56 124 Z" fill="#cfd3de"/>
+        <!-- parent -->
+        <path d="M178 230 Q178 150 210 150 Q242 150 242 230 Z" fill="var(--sky)"/>
+        <circle cx="210" cy="128" r="20" fill="#c48a63"/>
+        <path d="M190 124 Q194 104 210 104 Q226 104 230 124 Q220 112 210 112 Q200 112 190 124 Z" fill="#3a2418"/>
+        <!-- girl -->
+        <path d="M322 230 Q322 172 350 172 Q378 172 378 230 Z" fill="var(--rose)"/>
+        <circle cx="350" cy="152" r="17" fill="#f2c9a8"/>
+        <path d="M333 150 Q335 132 350 132 Q365 132 367 150 Q359 140 350 140 Q341 140 333 150 Z" fill="#5a3522"/>
+        <circle cx="370" cy="144" r="7" fill="#5a3522"/>
+        <circle cx="350" cy="160" r="40" fill="var(--gold)" opacity="0.18" class="glow-pulse"/>
+        <circle r="9" fill="var(--gold)" id="spark">
+          <animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#thread"/></animateMotion>
+        </circle>
+        <g font-family="IM Fell English, Georgia, serif" font-size="17" fill="var(--muted)" text-anchor="middle">
+          <text x="76" y="248">Grandparents</text>
+          <text x="210" y="248">Parents</text>
+          <text x="350" y="248" fill="var(--ink)" font-weight="700">Her</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="chapter guests" aria-labelledby="c5">
+    <div class="stack">
+      <span class="chapter-no">Chapter 5</span>
+      <h2 id="c5">How to be a great guest</h2>
+      <p>You don’t need to know anything or do anything special. Just being there means a lot.</p>
+    </div>
+    <div class="tips">
+      <div class="tip"><h3>Dress up</h3><p>Dress as you would for a nice wedding (plus sneakers for the party).</p></div>
+      <div class="tip"><h3>Follow along</h3><p>It’s fine to just sit quietly; most prayer books have English on the facing page. Stand when others stand.</p></div>
+      <div class="tip"><h3>Phones away</h3><p>Many synagogues don’t allow phones or photos during Saturday services. Ask the family if you’re not sure.</p></div>
+      <div class="tip"><h3>Gifts</h3><p>Money is common, often in multiples of $18, such as $54, $72, and so on. The Hebrew letters for 18 spell <i>chai</i>, which means “life.”</p></div>
+      <div class="tip"><h3>Say “Mazel tov!”</h3><p>It means congratulations. Say it like <b>MAH-zel tov</b>.</p></div>
+    </div>
+  </section>
+
+  <footer class="closing">
+    <h2>Most of all, tell her you’re proud of her.</h2>
+    <p class="muted">She earned it.</p>
+  </footer>
+
+</main>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // 13 lights
+  var lights = document.getElementById("lights");
+  for (var i = 0; i < 13; i++) {
+    var d = document.createElement("span");
+    d.className = "light";
+    d.style.animationDelay = (i * 0.3) + "s";
+    lights.appendChild(d);
+  }
+
+  // Confetti
+  var cg = document.getElementById("confetti");
+  var colors = ["var(--gold)", "var(--rose)", "var(--blush)", "var(--sky)"];
+  if (!reduce) {
+    for (var j = 0; j < 22; j++) {
+      var c = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      c.setAttribute("x", 20 + Math.random() * 380);
+      c.setAttribute("y", 0);
+      c.setAttribute("width", 6); c.setAttribute("height", 10); c.setAttribute("rx", 2);
+      c.setAttribute("fill", colors[j % 4]);
+      c.setAttribute("class", "confetti");
+      c.style.animationDuration = (3 + Math.random() * 3) + "s";
+      c.style.animationDelay = (-Math.random() * 6) + "s";
+      cg.appendChild(c);
+    }
+  }
+
+  // Stop the moving spark for reduced motion
+  if (reduce) {
+    var gens = document.getElementById("gens");
+    if (gens.pauseAnimations) gens.pauseAnimations();
+    document.getElementById("spark").setAttribute("cx", 350);
+    document.getElementById("spark").setAttribute("cy", 160);
+  }
+})();
+</script>
+</body>
+</html>
